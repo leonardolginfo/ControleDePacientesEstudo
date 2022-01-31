@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="number_val" placeholder="Enter your number here" name="" />
+
+    <button type="button" onclick="validateNumber()">Ok</button>
+
+    <button type="button" id="click_me">Click me!</button>
+    <button id="adicionar-paciente" class="botao bto-principal">Adicionar</button>
+    <script>
+
+        var click_me = document.getElementById('click_me');
+
+        click_me.addEventListener("click", fnClickMe);
+
+        function fnClickMe() {
+            alert('You have clicked me!');
+        }
+
+        var btnAdicionarPaciente = document.getElementById("adicionar-paciente");
+
+btnAdicionarPaciente.addEventListener("click", btnAdicionar);
+
+function btnAdicionar(){
+    console.log("Eita, clicaram");
+}
+
+    </script>
+</body>
+</html>

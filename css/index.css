@@ -20,9 +20,19 @@ header h1{
 	vertical-align:	middle;
 }
 header h2{
-	font-size: 2em;
+	font-size: 24px;
 	display:inline-block;
 	vertical-align:	middle;
+}
+
+#titulo-form{
+	font-size:24px;
+}
+#nome{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 115vh;
 }
 
 header .container:before{

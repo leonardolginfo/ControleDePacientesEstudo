@@ -16,7 +16,7 @@ for (var i = 0; i < pacientes.length; i++) {
     var tdImc = paciente.querySelector(".info-imc");
     var alturaValida = true;
     var pesoValido = true;
-    
+
     if (peso <= 0 || peso >= 350) {
         pesoValido = false;
         tdImc.textContent = "Peso inválido";
@@ -36,3 +36,10 @@ for (var i = 0; i < pacientes.length; i++) {
         tdImc.textContent = imc.toFixed(2);
     }
 }
+
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
+botaoAdicionar.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("Oi eu sou o botao e fui clicado");
+    }
+);
