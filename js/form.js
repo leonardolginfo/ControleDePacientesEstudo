@@ -20,7 +20,7 @@ botaoAdicionar.addEventListener("click", (event) => {
                 var gorduraTd = document.createElement("td");
                 var imcTd = document.createElement("td");
 
-                nomeTd.textContent = nomeAdd.toUpperCase();
+                nomeTd.textContent = nomeAdd;
                 pesoTd.textContent = pesoAdd;
                 alturaTd.textContent = alturaAdd;
                 gorduraTd.textContent = gorduraAdd;
