@@ -1,36 +1,38 @@
-
 var botaoAdicionar = document.querySelector("#adicionar-paciente");
 botaoAdicionar.addEventListener("click", (event) => {
-    event.preventDefault();
-    console.log("Oi eu sou o botao e fui clicado");
+            event.preventDefault();
 
-    var formAdd = document.querySelector("#form-adiciona");
+            var formAdd = document.querySelector("#form-adiciona");
+            if (formAdd.nome.value == "" || formAdd.peso.value == "" ||
+                formAdd.altura.value == "" || formAdd.gordura.value == "") {
+                alert("Formulário possui um ou mais campos em branco.")
+            } else {
+                var nomeAdd = formAdd.nome.value;
+                var pesoAdd = formAdd.peso.value;
+                var alturaAdd = formAdd.altura.value;
+                var gorduraAdd = formAdd.gordura.value;
 
-    var nomeAdd = formAdd.nome.value;
-    var pesoAdd = formAdd.peso.value;
-    var alturaAdd = formAdd.altura.value;
-    var gorduraAdd = formAdd.gordura.value;
+                var pacienteLinha = document.createElement("tr");
 
-    var pacienteLinha = document.createElement("tr");
-    
-    var nomeTd = document.createElement("td");
-    var pesoTd = document.createElement("td");
-    var alturaTd = document.createElement("td");
-    var gorduraTd = document.createElement("td");
-    var imcTd = document.createElement("td");
+                var nomeTd = document.createElement("td");
+                var pesoTd = document.createElement("td");
+                var alturaTd = document.createElement("td");
+                var gorduraTd = document.createElement("td");
+                var imcTd = document.createElement("td");
 
-    nomeTd.textContent = nomeAdd.toUpperCase();
-    pesoTd.textContent = pesoAdd;
-    alturaTd.textContent = alturaAdd;
-    gorduraTd.textContent = gorduraAdd;
+                nomeTd.textContent = nomeAdd.toUpperCase();
+                pesoTd.textContent = pesoAdd;
+                alturaTd.textContent = alturaAdd;
+                gorduraTd.textContent = gorduraAdd;
 
-    pacienteLinha.appendChild(nomeTd);
-    pacienteLinha.appendChild(pesoTd);
-    pacienteLinha.appendChild(alturaTd);
-    pacienteLinha.appendChild(gorduraTd);
+                pacienteLinha.appendChild(nomeTd);
+                pacienteLinha.appendChild(pesoTd);
+                pacienteLinha.appendChild(alturaTd);
+                pacienteLinha.appendChild(gorduraTd);
 
-    var tabelaAdd = document.querySelector("#tabela-pacientes");
-    tabelaAdd.appendChild(pacienteLinha);
+                var tabelaAdd = document.querySelector("#tabela-pacientes");
+                tabelaAdd.appendChild(pacienteLinha);
 
 
-});
+            }
+        });
