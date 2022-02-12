@@ -17,7 +17,11 @@ botaoAdicionar.addEventListener("click", (event) => {
         var pacienteLinha = montaTr(paciente)
 
         var tabelaAdd = document.querySelector("#tabela-pacientes");
+
         tabelaAdd.appendChild(pacienteLinha);
+        
+        formAdd.reset();
+
     }
 
     function pegarDadosFormAdd(form) {
@@ -37,23 +41,11 @@ botaoAdicionar.addEventListener("click", (event) => {
         var pacienteLinha = document.createElement("tr");
         pacienteLinha.classList.add("paciente");
 
-        var nomeTd = montaTd(paciente.nome, "info-nome");
-        var pesoTd = montaTd(paciente.peso, "info-peso");
-        var alturaTd = montaTd(paciente.altura, "info-altura");
-        var gorduraTd = montaTd(paciente.gordura, "info-gordura");
-        var imcTd = montaTd(paciente.imc, "info-imc");
-
-        nomeTd.textContent = paciente.nome;
-        pesoTd.textContent = paciente.peso;
-        alturaTd.textContent = paciente.altura;
-        gorduraTd.textContent = paciente.gordura;
-        imcTd.textContent = paciente.imc;
-
-        pacienteLinha.appendChild(nomeTd);
-        pacienteLinha.appendChild(pesoTd);
-        pacienteLinha.appendChild(alturaTd);
-        pacienteLinha.appendChild(gorduraTd);
-        pacienteLinha.appendChild(imcTd);
+        pacienteLinha.appendChild(montaTd(paciente.nome, "info-nome"));
+        pacienteLinha.appendChild(montaTd(paciente.peso, "info-peso"));
+        pacienteLinha.appendChild(montaTd(paciente.altura, "info-altura"));
+        pacienteLinha.appendChild(montaTd(paciente.gordura, "info-gordura"));
+        pacienteLinha.appendChild(montaTd(paciente.imc, "info-imc"));
 
         return pacienteLinha;
 
