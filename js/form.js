@@ -4,36 +4,45 @@ botaoAdicionar.addEventListener("click", (event) => {
 
     var formAdd = document.querySelector("#form-adiciona");
 
-    if (formAdd.nome.value == "" || formAdd.peso.value == "" ||
-        formAdd.altura.value == "" || formAdd.gordura.value == "") {
-        alert("Formulário possui um ou mais campos em branco.")
-    } else {
-
-        //extrair dados do formAdd
-        var paciente = pegarDadosFormAdd(formAdd);
 
 
-        //montar tr com paciente
-        var pacienteLinha = montaTr(paciente)
+    //extrair dados do formAdd
+    var paciente = pegarDadosFormAdd(formAdd);
 
-        var erros = validaPaciente(paciente);
 
-        if (erros.length > 0) {
-            var erroSpan = document.querySelector("#mensagem-erro");
-            erroSpan.textContent = erros;
-            return;
-        }
+    //montar tr com paciente
+    var pacienteLinha = montaTr(paciente)
 
-        var tabelaAdd = document.querySelector("#tabela-pacientes");
+    var erros = validaPaciente(paciente);
 
-        tabelaAdd.appendChild(pacienteLinha);
+    console.log(erros);
+    if (erros.length > 0) {
+        exibirMensagensErro(erros);
+        return;
+    }
 
-        formAdd.reset();
+    var tabelaAdd = document.querySelector("#tabela-pacientes");
+
+    tabelaAdd.appendChild(pacienteLinha);
+
+    formAdd.reset();
+    var mensagemDeErroNaUl = document.querySelector("#mensagens-erro");
+    mensagemDeErroNaUl.innerHTML = "";
+
+
+
+    function exibirMensagensErro(erros) {
+        var ul = document.querySelector("#mensagens-erro");
+        ul.innerHTML = "";
+        erros.forEach(function (erro) {
+            var li = document.createElement("li");
+            li.textContent = erro;
+            ul.appendChild(li);
+        });
 
     }
 
     function pegarDadosFormAdd(form) {
-
         var paciente = {
             nome: formAdd.nome.value,
             altura: formAdd.altura.value,
@@ -69,11 +78,23 @@ botaoAdicionar.addEventListener("click", (event) => {
 
 function validaPaciente(paciente) {
     var erros = [];
+
+    if (paciente.nome.length == 0)
+        erros.push("O nome não pode ser em branco");
+
     if (!validaPeso(paciente.peso))
         erros.push("Peso Inválido.");
 
     if (!validaAltura(paciente.altura))
         erros.push("Altura Inválida.");
+    if (paciente.peso.length == 0)
+        erros.push("Peso não pode ser em branco");
+
+    if (paciente.altura.length == 0)
+        erros.push("Altura não pode ser em branco");
+
+    if (paciente.gordura.length == 0)
+        erros.push("Gordura não pode ser em branco");
 
     return erros;
 }
