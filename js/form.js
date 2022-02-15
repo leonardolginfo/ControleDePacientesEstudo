@@ -11,15 +11,23 @@ botaoAdicionar.addEventListener("click", (event) => {
 
         //extrair dados do formAdd
         var paciente = pegarDadosFormAdd(formAdd);
-        console.log(paciente);
+
 
         //montar tr com paciente
         var pacienteLinha = montaTr(paciente)
 
+        var erro = validaPaciente(paciente);
+
+        if(erro.length>0){
+            var erroSpan = document.querySelector("#mensagem-erro");
+            erroSpan.textContent = erro;
+            return;
+        }
+
         var tabelaAdd = document.querySelector("#tabela-pacientes");
 
         tabelaAdd.appendChild(pacienteLinha);
-        
+
         formAdd.reset();
 
     }
@@ -58,3 +66,11 @@ botaoAdicionar.addEventListener("click", (event) => {
         return td
     }
 });
+
+function validaPaciente(paciente) {
+    if (validaPeso(paciente.peso)) {
+        return "";
+    } else {
+        return "Peso Inválido";
+    }
+}
